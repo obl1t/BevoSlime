@@ -15,7 +15,7 @@ public partial class JumpPowerup : Area2D
 		GetNode<AnimatedSprite2D>("JumpSprite").Play("Default");
 		world = GetNode<Node2D>("/root/World");
 		
-		// Connect the world's player ready signal to OnPlayerReady;
+		// Connect the world's player ready signal to OnPlayerReady.
 		((WorldController) world).PlayerReady += OnPlayerReady;
 	}
 
@@ -33,7 +33,7 @@ public partial class JumpPowerup : Area2D
 			instance.Emitting = true;
 			instance.GlobalPosition = GlobalPosition;
 			GetTree().CurrentScene.AddChild(instance);
-			EmitSignal(SignalName.JumpPowerupCollected);
+			((Player) body).EnterJump();
 			QueueFree();
 		}
 	}
@@ -41,7 +41,5 @@ public partial class JumpPowerup : Area2D
 	// Used to connect to the player when the player is instantiated.
 	private void OnPlayerReady(Node2D player){
 		this.player = player;
-		// Connect my JumpPowerupCollected signal to the player's OnJumpEntered method. 
-		((Player) player).ConnectJumpPowerup(this);
 	}
 }

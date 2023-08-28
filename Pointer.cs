@@ -3,7 +3,7 @@ using System;
 
 public partial class Pointer : Area2D
 {
-	public enum PointerState { Idle, Aggroing, Deaggroing, Dashing };
+	public enum PointerState { Idle, Aggroing, Deaggroing, Dashing, Frozen};
 	public PointerState myState;
 	private AnimatedSprite2D mySprite;
 	private Vector2 velocity;
@@ -12,6 +12,11 @@ public partial class Pointer : Area2D
 
 	private Vector2 startPosition;
 	private float shakeStartTime;
+	private Node2D player;
+	private Node2D world;
+
+	private const float AGGRO_TIME = 0.8f; // How long after the player enters the pointer's eyesight before the pointer starts to dash.
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,7 +24,11 @@ public partial class Pointer : Area2D
 		timeElapsed = 0;
 		shakeRadius = 0;
 		mySprite = GetNode<AnimatedSprite2D>("PointerSprite");
+		world = GetNode<Node2D>("/root/World");
+		// Connect the world's player ready signal to OnPlayerReady.
+		((WorldController) world).PlayerReady += OnPlayerReady;
 	}
+
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -28,14 +37,13 @@ public partial class Pointer : Area2D
 		// Float up and down.
 		if(myState == PointerState.Idle){
 			velocity.Y = MathF.Sin(timeElapsed) * 10f;
-			GD.Print(velocity.Y);
 			Position += velocity * (float)delta;
 		}
 		// Start to shake.
 		if(myState == PointerState.Aggroing){
 			Shake();
-			shakeRadius += (float) delta * 2;
-			if(timeElapsed - shakeStartTime > 2f){
+			shakeRadius += (float) delta * 3f;
+			if(timeElapsed - shakeStartTime > AGGRO_TIME){
 				myState = PointerState.Dashing;
 				mySprite.Play("Dashing");
 			}
@@ -83,5 +91,18 @@ public partial class Pointer : Area2D
 	private void Shake(){
 		float angle = GD.Randf() * 2f * MathF.PI;
 		Position = startPosition + new Vector2(MathF.Sin(angle) * shakeRadius, MathF.Cos(angle) * shakeRadius);
+	}
+
+	private void OnPlayerReady(Node2D player){
+		this.player = player;
+	}
+
+	private void OnBodyEntered(Node2D body){
+		if(body.HasMethod("IsPlayer")){
+			((Player) body).Die();
+			myState = PointerState.Frozen;
+			velocity.X = 0;
+			velocity.Y = 0;
+		}
 	}
 }

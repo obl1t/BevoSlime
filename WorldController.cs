@@ -8,6 +8,7 @@ public partial class WorldController : Node2D
 	private PackedScene deathScreen = GD.Load<PackedScene>("res://DeathScreen.tscn");
 	private PackedScene level1 = GD.Load<PackedScene>("res://Level1.tscn");
 	private PackedScene level2 = GD.Load<PackedScene>("res://Level2.tscn");
+	private PackedScene level3 = GD.Load<PackedScene>("res://Level3.tscn");
 	private Node2D currentLevel;
 	private int currentLevelIndex; // Used to determine logic related to the current game level.
 	private PackedScene playerScene = GD.Load<PackedScene>("res://Player.tscn");
@@ -47,6 +48,9 @@ public partial class WorldController : Node2D
 		}
 		else if(currentLevelIndex == 2){
 			currentLevel = (Node2D) level2.Instantiate();
+		}
+		else if(currentLevelIndex == 3){
+			currentLevel = (Node2D) level3.Instantiate();
 		}
 		if(isInDeath){
 			// Destroy the death screen.

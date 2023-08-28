@@ -62,6 +62,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.458824)
+color = Color(0, 0, 0, 0.278431)
 
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]

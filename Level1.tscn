@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4iajs64ft6xg"]
+[gd_scene load_steps=18 format=3 uid="uid://c4iajs64ft6xg"]
 
 [ext_resource type="PackedScene" uid="uid://c8aumgc6tc1f0" path="res://JumpPowerup.tscn" id="1_barge"]
 [ext_resource type="PackedScene" uid="uid://codj5h0u6jnea" path="res://Sign.tscn" id="1_cjsvi"]
@@ -12,10 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ckp7nca1u6g4n" path="res://Images/Door/sprite_3.png" id="11_j7ai4"]
 [ext_resource type="Texture2D" uid="uid://ce1gh5m6bf2m6" path="res://Images/Door/sprite_4.png" id="12_d43iq"]
 [ext_resource type="Texture2D" uid="uid://dch0p70uk6q65" path="res://Images/Door/sprite_5.png" id="13_arf2y"]
-[ext_resource type="Script" path="res://Pointer.cs" id="13_faks1"]
-[ext_resource type="Texture2D" uid="uid://bcckhln2em3xx" path="res://Images/Pointer/sprite_1.png" id="14_spopg"]
-[ext_resource type="Texture2D" uid="uid://ch6d486e5kaw7" path="res://Images/Pointer/sprite_2.png" id="15_q5do7"]
-[ext_resource type="Texture2D" uid="uid://d2h6l8e1jj2u8" path="res://Images/Pointer/sprite_0.png" id="16_lfem5"]
+[ext_resource type="PackedScene" uid="uid://b36rhdbp2frpi" path="res://Pointer.tscn" id="13_wdprt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p815v"]
 texture = ExtResource("2_ibds4")
@@ -143,36 +140,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ykr5m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_spopg")
-}],
-"loop": false,
-"name": &"Aggroed",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_q5do7")
-}],
-"loop": false,
-"name": &"Dashing",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_lfem5")
-}],
-"loop": false,
-"name": &"Idle",
-"speed": 6.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi1th"]
-size = Vector2(1018.57, 57.1429)
-
 [node name="Level1" type="Node2D"]
 
 [node name="Sign" parent="." instance=ExtResource("1_cjsvi")]
@@ -237,30 +204,10 @@ position = Vector2(2831, 539)
 [node name="Label" parent="Sign3" index="2"]
 text = "A to proceed when over a door."
 
-[node name="Pointer" type="Area2D" parent="."]
-position = Vector2(-126, 683)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("13_faks1")
-metadata/_edit_group_ = true
-
-[node name="PointerSprite" type="AnimatedSprite2D" parent="Pointer"]
-sprite_frames = SubResource("SpriteFrames_ykr5m")
-animation = &"Idle"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pointer"]
-polygon = PackedVector2Array(61, 47, 62, 23, 41, 1, 62, -24, 62, -46, -61, -5, -61, 4)
-
-[node name="Eyesight" type="Area2D" parent="Pointer"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer/Eyesight"]
-position = Vector2(-476.429, -1.42859)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_oi1th")
+[node name="Pointer" parent="." instance=ExtResource("13_wdprt")]
 
 [connection signal="body_entered" from="Door" to="Door" method="OnBodyEntered"]
 [connection signal="body_exited" from="Door" to="Door" method="OnBodyExited"]
-[connection signal="body_entered" from="Pointer/Eyesight" to="Pointer" method="OnEyesightEntered"]
-[connection signal="body_exited" from="Pointer/Eyesight" to="Pointer" method="OnEyesightExited"]
 
 [editable path="Sign2"]
 [editable path="Sign3"]

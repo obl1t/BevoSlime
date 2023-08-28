@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://b36rhdbp2frpi"]
+
+[ext_resource type="Script" path="res://Pointer.cs" id="1_xuvba"]
+[ext_resource type="Texture2D" uid="uid://bcckhln2em3xx" path="res://Images/Pointer/sprite_1.png" id="2_ugl2g"]
+[ext_resource type="Texture2D" uid="uid://ch6d486e5kaw7" path="res://Images/Pointer/sprite_2.png" id="3_epkdr"]
+[ext_resource type="Texture2D" uid="uid://d2h6l8e1jj2u8" path="res://Images/Pointer/sprite_0.png" id="4_p2bdr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykr5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ugl2g")
+}],
+"loop": false,
+"name": &"Aggroed",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_epkdr")
+}],
+"loop": false,
+"name": &"Dashing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p2bdr")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi1th"]
+size = Vector2(1018.57, 57.1429)
+
+[node name="Pointer" type="Area2D"]
+position = Vector2(-126, 683)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_xuvba")
+metadata/_edit_group_ = true
+
+[node name="PointerSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ykr5m")
+animation = &"Idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(61, 47, 62, 23, 41, 1, 62, -24, 62, -46, -61, -5, -61, 4)
+
+[node name="Eyesight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eyesight"]
+position = Vector2(-476.429, -1.42859)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_oi1th")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_entered" from="Eyesight" to="." method="OnEyesightEntered"]
+[connection signal="body_exited" from="Eyesight" to="." method="OnEyesightExited"]

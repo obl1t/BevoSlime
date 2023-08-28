@@ -65,6 +65,10 @@ public partial class Player : CharacterBody2D
 		if(!IsOnFloor()){
 			velocity.Y += (float) delta * GRAVITY;
 		}
+		if(myState == PlayerState.Jumping && IsOnCeilingOnly()){
+			velocity.Y = 0;
+		}
+
 		if(myState == PlayerState.Jumping && !IsOnFloor() && !beenOffFloor){
 			beenOffFloor = true;
 		}
@@ -145,20 +149,13 @@ public partial class Player : CharacterBody2D
 	}
 
 	// Called when grabbing a jump powerup. 
-	public void OnJumpEntered(){
+	public void EnterJump(){
 		numJumps++;
 		EmitSignal(SignalName.UpdateJumps, numJumps);
 	}
 
-	// Used to connect a jump powerup to the player. This method is used to allow multiple powerups to connect upon initialization.
-	public void ConnectJumpPowerup(Node2D body){
-		((JumpPowerup) body).JumpPowerupCollected += OnJumpEntered;
-	}
+	
 
-	// Used to connect a spike to the player. This method is used to allow multiple spikes to connect upon initialization.
-	public void ConnectSpike(Node2D body){
-		((Spike) body).SpikeHit += OnSpikeEntered;
-	}
 
 	// Used to identify the player.
 	public bool IsPlayer(){
@@ -166,14 +163,9 @@ public partial class Player : CharacterBody2D
 	}
 
 
-	// Called when touching a spike.
-	public void OnSpikeEntered(){
-		Die();
-	}
-
 	
 	// Kill the player and send a signal to the world to display a death screen.
-	private void Die(){
+	public void Die(){
 		myState = PlayerState.Dying;
 		mySprite.Play("Death");
 		velocity.X = 0;

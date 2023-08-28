@@ -22,16 +22,15 @@ public partial class Spike : Area2D
 	}
 
 	private void OnBodyEntered(Node2D body){
-		// If the body was a player body, send a signal to the player to die.
+		// If the body was a player body, tell the player to die.
 		if(body.HasMethod("IsPlayer")){
-			EmitSignal(SignalName.SpikeHit);
+			((Player) body).Die();
 		}
 	}
 
 	// Used to connect to the player when the player is instantiated.
 	private void OnPlayerReady(Node2D player){
 		this.player = player;
-		((Player) player).ConnectSpike(this);
 	}
 	
 }
