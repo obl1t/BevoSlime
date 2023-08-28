@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw658pj2raodo"]
+
+[ext_resource type="Texture2D" uid="uid://dodjl2pavf6qd" path="res://Images/JumpParticle.png" id="1_oue4p"]
+
+[sub_resource type="Curve" id="Curve_inwki"]
+_data = [Vector2(0.307108, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="JumpParticles" type="CPUParticles2D"]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("1_oue4p")
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 70.71
+initial_velocity_max = 136.36
+angular_velocity_max = 7.27
+scale_amount_curve = SubResource("Curve_inwki")

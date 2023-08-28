@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://0crs30sqs1sm"]
+
+[ext_resource type="Script" path="res://WorldController.cs" id="1_fpqwx"]
+[ext_resource type="Script" path="res://JumpLabel.cs" id="2_lq1o6"]
+[ext_resource type="Texture2D" uid="uid://dgci65rj6wcmn" path="res://Images/JumpUI.png" id="3_h7xq4"]
+
+[sub_resource type="SystemFont" id="SystemFont_meooe"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_fpqwx")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_top = -5.0
+offset_right = 42.0
+offset_bottom = 35.0
+metadata/_edit_group_ = true
+
+[node name="Jumps" type="Label" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 1108.0
+offset_top = 32.0
+offset_right = 1214.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_meooe")
+theme_override_font_sizes/font_size = 40
+text = ": 1"
+script = ExtResource("2_lq1o6")
+
+[node name="JumpIcon" type="TextureRect" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 1065.0
+offset_top = 21.0
+offset_right = 1105.0
+offset_bottom = 89.1416
+texture = ExtResource("3_h7xq4")
+expand_mode = 5

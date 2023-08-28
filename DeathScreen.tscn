@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://2vydqwec277p"]
+
+[ext_resource type="Script" path="res://DeathScreen.cs" id="1_6054h"]
+
+[node name="DeathScreen" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_6054h")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -438.0
+offset_right = 184.0
+offset_bottom = -289.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "EXIT GAME"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -293.0
+offset_right = 359.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "YOU ARE DEAD"
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -168.0
+offset_right = 250.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 75
+text = "R TO RESTART"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.458824)
+
+[connection signal="pressed" from="Button" to="." method="OnButtonPressed"]

@@ -1,0 +1,266 @@
+[gd_scene load_steps=23 format=3 uid="uid://c4iajs64ft6xg"]
+
+[ext_resource type="PackedScene" uid="uid://c8aumgc6tc1f0" path="res://JumpPowerup.tscn" id="1_barge"]
+[ext_resource type="PackedScene" uid="uid://codj5h0u6jnea" path="res://Sign.tscn" id="1_cjsvi"]
+[ext_resource type="Texture2D" uid="uid://bsamrwn36433v" path="res://Images/Floor.png" id="2_ibds4"]
+[ext_resource type="Script" path="res://MainCamera.cs" id="4_04yej"]
+[ext_resource type="Texture2D" uid="uid://dfiabiplpp7ah" path="res://Images/bg.png" id="5_4lxtg"]
+[ext_resource type="Script" path="res://Door.cs" id="7_lno5j"]
+[ext_resource type="Texture2D" uid="uid://dh8ohavmolbvd" path="res://Images/Door/sprite_0.png" id="8_a0ogp"]
+[ext_resource type="Texture2D" uid="uid://bjc1eph0shylo" path="res://Images/Door/sprite_1.png" id="9_8q68r"]
+[ext_resource type="Texture2D" uid="uid://c7dyys03x80j4" path="res://Images/Door/sprite_2.png" id="10_i6hld"]
+[ext_resource type="Texture2D" uid="uid://ckp7nca1u6g4n" path="res://Images/Door/sprite_3.png" id="11_j7ai4"]
+[ext_resource type="Texture2D" uid="uid://ce1gh5m6bf2m6" path="res://Images/Door/sprite_4.png" id="12_d43iq"]
+[ext_resource type="Texture2D" uid="uid://dch0p70uk6q65" path="res://Images/Door/sprite_5.png" id="13_arf2y"]
+[ext_resource type="Script" path="res://Pointer.cs" id="13_faks1"]
+[ext_resource type="Texture2D" uid="uid://bcckhln2em3xx" path="res://Images/Pointer/sprite_1.png" id="14_spopg"]
+[ext_resource type="Texture2D" uid="uid://ch6d486e5kaw7" path="res://Images/Pointer/sprite_2.png" id="15_q5do7"]
+[ext_resource type="Texture2D" uid="uid://d2h6l8e1jj2u8" path="res://Images/Pointer/sprite_0.png" id="16_lfem5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p815v"]
+texture = ExtResource("2_ibds4")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/transpose = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/2 = 2
+0:0/2/transpose = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:1/next_alternative_id = 2
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-17.125, -32.25, 64, -32.1734, 64, 32, -17.5, 32.5, -36, 10, -34, -14.5)
+2:1/1 = 1
+2:1/1/flip_v = true
+2:1/1/transpose = true
+2:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/1/physics_layer_0/angular_velocity = 0.0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -32.1734, 64, -32, 64, 30.5, -64, 31.5)
+1:1/1 = 1
+1:1/1/transpose = true
+1:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/1/physics_layer_0/angular_velocity = 0.0
+1:1/1/physics_layer_0/polygon_0/points = PackedVector2Array(-31.75, -64, 31.25, -64, 30.75, 64, -31.25, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -31.8198, 15.7331, -31.8198, 36.5, -10.5, 36, 12, 15.5, 32, -64, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -31.8198, 64, 31.5, 32.5, 31.5, 32, 64, -31, 64, -31.5, 31.5, -64, 31, -64, -31.8198)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.83363, -31.8198, 64, -31.8198, 64, 32.1734, 30.9359, 32.5269, 30.5824, 64, -31.643, 64, -31.2895, 1.06065)
+
+[sub_resource type="TileSet" id="TileSet_kniid"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/4 = SubResource("TileSetAtlasSource_p815v")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orxay"]
+size = Vector2(91, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8q48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_arf2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d43iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j7ai4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i6hld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8q68r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a0ogp")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_a0ogp")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_a0ogp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8q68r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i6hld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j7ai4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d43iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_arf2y")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykr5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_spopg")
+}],
+"loop": false,
+"name": &"Aggroed",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_q5do7")
+}],
+"loop": false,
+"name": &"Dashing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_lfem5")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi1th"]
+size = Vector2(1018.57, 57.1429)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Sign" parent="." instance=ExtResource("1_cjsvi")]
+
+[node name="JumpPowerup2" parent="." instance=ExtResource("1_barge")]
+position = Vector2(2202, 540)
+
+[node name="JumpPowerup" parent="." instance=ExtResource("1_barge")]
+position = Vector2(2104, 699)
+
+[node name="Level1Map" type="TileMap" parent="."]
+position = Vector2(97, 108)
+scale = Vector2(0.7, 0.7)
+tile_set = SubResource("TileSet_kniid")
+format = 2
+layer_0/name = "platforms"
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(524287, 4, 0, 458752, 4, 0, 458753, 4, 0, 458754, 4, 0, 458755, 4, 0, 458756, 4, 0, 458757, 4, 0, 458758, 4, 0, 458759, 4, 0, 458760, 4, 0, 458761, 4, 0, 458762, 4, 0, 458763, 4, 0, 458764, 4, 0, 458765, 4, 0, 458766, 4, 0, 458767, 4, 0, 458768, 4, 0, 458769, 4, 0, 458770, 4, 0, 524285, 4, 0, 524284, 4, 0, 524283, 4, 0, 458771, 4, 0, 458772, 4, 0, 458773, 4, 0, 458774, 4, 0, 458775, 4, 0, 458776, 4, 0, 458777, 4, 0, 524286, 4, 0, 524282, 4, 0, 524281, 65540, 0, 458745, 4, 65536, 393209, 4, 65536, 327673, 4, 65536, 262137, 4, 65536, 196601, 4, 65536, 131065, 4, 65536, 65529, 4, 65536, -7, 4, 65536, -65543, 4, 65536, -65544, 131076, 0, -8, 131076, 0, 65528, 131076, 0, 131064, 131076, 0, 196600, 131076, 0, 262136, 131076, 0, 327672, 131076, 0, 393208, 131076, 0, 458744, 131076, 0, 524280, 131076, 0, 589816, 131076, 0, 589817, 131076, 0, 589818, 131076, 0, 589819, 131076, 0, 589820, 131076, 0, 589821, 131076, 0, 589822, 131076, 0, 589823, 131076, 0, 524288, 131076, 0, 524289, 131076, 0, 524290, 131076, 0, 524291, 131076, 0, 524292, 131076, 0, 524293, 131076, 0, 524294, 131076, 0, 524295, 131076, 0, 524296, 131076, 0, 524297, 131076, 0, 524298, 131076, 0, 524299, 131076, 0, 524300, 131076, 0, 524301, 131076, 0, 524302, 131076, 0, 524303, 131076, 0, 524313, 131076, 0, 524312, 131076, 0, 524311, 131076, 0, 524310, 131076, 0, 524309, 131076, 0, 524308, 131076, 0, 524307, 131076, 0, 524306, 131076, 0, 524305, 131076, 0, 524304, 131076, 0, 327692, 65540, 2, 327693, 4, 2, 327691, 131076, 1, 393228, 65540, 65537, 458751, 4, 1, 458750, 4, 1, 458749, 4, 1, 458778, 4, 0, 458779, 4, 0, 458780, 4, 0, 458781, 4, 0, 458782, 4, 0, 458783, 4, 0, 458784, 4, 0, 458785, 4, 0, 458786, 4, 0, 458787, 4, 0, 458788, 4, 0, 458789, 4, 0, 458790, 4, 0, 458791, 4, 0, 327704, 4, 2, 327706, 131076, 1, 327709, 131076, 2, 327711, 65540, 1, 327712, 65540, 1, 327702, 131076, 1, 327703, 65540, 2, 393239, 65540, 65537, 327707, 4, 2, 393245, 65540, 65537, 327710, 65540, 1, 393249, 4, 131072, 327713, 4, 131072, 262177, 4, 131072, 196641, 4, 131072, 131105, 4, 131072, 65569, 4, 131072, 33, 4, 131072, -65503, 4, 131072, -131039, 4, 131072, -196575, 4, 131072, 393250, 131076, 0, 327714, 131076, 0, 262178, 131076, 0, 196642, 131076, 0, 131106, 131076, 0, 65570, 131076, 0, 34, 131076, 0, -65502, 131076, 0, -131038, 131076, 0, -196574, 131076, 0)
+layer_1/name = "foreground"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(393228, 4, 1, 393216, 4, 1, 458748, 4, 1, 458746, 4, 1, 458747, 4, 1, 393239, 4, 1, 393240, 4, 1, 393241, 4, 1, 393242, 4, 1, 393243, 4, 1, 393244, 4, 1, 393245, 4, 1, 393238, 4, 1, 393246, 4, 1)
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(91, 400)
+drag_left_margin = 0.0
+drag_right_margin = 0.0
+script = ExtResource("4_04yej")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainCamera"]
+visible = false
+position = Vector2(1264, 6.00006)
+scale = Vector2(1.17308, 0.4)
+texture = ExtResource("5_4lxtg")
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2(2987, 535)
+script = ExtResource("7_lno5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_orxay")
+
+[node name="DoorSprite" type="AnimatedSprite2D" parent="Door"]
+position = Vector2(-1, 0)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_j8q48")
+animation = &"Idle"
+
+[node name="Sign2" parent="." instance=ExtResource("1_cjsvi")]
+position = Vector2(927, 692)
+
+[node name="Label" parent="Sign2" index="2"]
+text = "Z to jump. You have limited jumps. "
+
+[node name="Sign3" parent="." instance=ExtResource("1_cjsvi")]
+position = Vector2(2831, 539)
+
+[node name="Label" parent="Sign3" index="2"]
+text = "A to proceed when over a door."
+
+[node name="Pointer" type="Area2D" parent="."]
+position = Vector2(-126, 683)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("13_faks1")
+metadata/_edit_group_ = true
+
+[node name="PointerSprite" type="AnimatedSprite2D" parent="Pointer"]
+sprite_frames = SubResource("SpriteFrames_ykr5m")
+animation = &"Idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pointer"]
+polygon = PackedVector2Array(61, 47, 62, 23, 41, 1, 62, -24, 62, -46, -61, -5, -61, 4)
+
+[node name="Eyesight" type="Area2D" parent="Pointer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer/Eyesight"]
+position = Vector2(-476.429, -1.42859)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_oi1th")
+
+[connection signal="body_entered" from="Door" to="Door" method="OnBodyEntered"]
+[connection signal="body_exited" from="Door" to="Door" method="OnBodyExited"]
+[connection signal="body_entered" from="Pointer/Eyesight" to="Pointer" method="OnEyesightEntered"]
+[connection signal="body_exited" from="Pointer/Eyesight" to="Pointer" method="OnEyesightExited"]
+
+[editable path="Sign2"]
+[editable path="Sign3"]

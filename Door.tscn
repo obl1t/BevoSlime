@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmpde0kkdmj6m"]
+
+[ext_resource type="Script" path="res://Door.cs" id="1_1xxmq"]
+[ext_resource type="Texture2D" uid="uid://dch0p70uk6q65" path="res://Images/Door/sprite_5.png" id="2_ylg1x"]
+[ext_resource type="Texture2D" uid="uid://ce1gh5m6bf2m6" path="res://Images/Door/sprite_4.png" id="3_seilk"]
+[ext_resource type="Texture2D" uid="uid://ckp7nca1u6g4n" path="res://Images/Door/sprite_3.png" id="4_1goya"]
+[ext_resource type="Texture2D" uid="uid://c7dyys03x80j4" path="res://Images/Door/sprite_2.png" id="5_gaub2"]
+[ext_resource type="Texture2D" uid="uid://bjc1eph0shylo" path="res://Images/Door/sprite_1.png" id="6_s3rme"]
+[ext_resource type="Texture2D" uid="uid://dh8ohavmolbvd" path="res://Images/Door/sprite_0.png" id="7_y4hse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orxay"]
+size = Vector2(91, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8q48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ylg1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_seilk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1goya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gaub2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s3rme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y4hse")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y4hse")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_y4hse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s3rme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gaub2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1goya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_seilk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ylg1x")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 12.0
+}]
+
+[node name="Door" type="Area2D"]
+position = Vector2(2987, 535)
+script = ExtResource("1_1xxmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_orxay")
+
+[node name="DoorSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_j8q48")
+animation = &"Idle"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

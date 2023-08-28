@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8aumgc6tc1f0"]
+
+[ext_resource type="Script" path="res://JumpPowerup.cs" id="1_6iw71"]
+[ext_resource type="Texture2D" uid="uid://c3062etxv8yas" path="res://Images/JumpPowerup/sprite_0.png" id="2_f8hgb"]
+[ext_resource type="Texture2D" uid="uid://cqf6kkut68862" path="res://Images/JumpPowerup/sprite_1.png" id="3_xvvgt"]
+[ext_resource type="Texture2D" uid="uid://dc36170yaomaw" path="res://Images/JumpPowerup/sprite_2.png" id="4_udhaq"]
+[ext_resource type="Texture2D" uid="uid://ds1a5bt4q2xxk" path="res://Images/JumpPowerup/sprite_3.png" id="5_nr5kg"]
+[ext_resource type="Texture2D" uid="uid://c2iw2y8lg3f6u" path="res://Images/JumpPowerup/sprite_4.png" id="6_nsdk0"]
+[ext_resource type="Texture2D" uid="uid://dqw5q13y76uf4" path="res://Images/JumpPowerup/sprite_5.png" id="7_pqbbe"]
+[ext_resource type="Texture2D" uid="uid://o04ejpkn8ih6" path="res://Images/JumpPowerup/sprite_6.png" id="8_3sq6r"]
+[ext_resource type="Texture2D" uid="uid://c4c070sgrl0d4" path="res://Images/JumpPowerup/sprite_7.png" id="9_h00p3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hnhp6"]
+radius = 16.0
+height = 136.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07pj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f8hgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xvvgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_udhaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nr5kg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nsdk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pqbbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3sq6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h00p3")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 12.0
+}]
+
+[node name="JumpPowerup" type="Area2D"]
+position = Vector2(454, 699)
+script = ExtResource("1_6iw71")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_hnhp6")
+
+[node name="JumpSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_07pj6")
+animation = &"Default"
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
