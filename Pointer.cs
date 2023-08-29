@@ -88,15 +88,18 @@ public partial class Pointer : Area2D
 		}
 	}
 
+	// Moves the pointer's location to a random point on a circle around its starting position.
 	private void Shake(){
 		float angle = GD.Randf() * 2f * MathF.PI;
 		Position = startPosition + new Vector2(MathF.Sin(angle) * shakeRadius, MathF.Cos(angle) * shakeRadius);
 	}
 
+	// Called when the player is instantiated.
 	private void OnPlayerReady(Node2D player){
 		this.player = player;
 	}
 
+	// Called when a body enters the Area2D.
 	private void OnBodyEntered(Node2D body){
 		if(body.HasMethod("IsPlayer")){
 			((Player) body).Die();

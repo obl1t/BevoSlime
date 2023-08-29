@@ -6,6 +6,7 @@ public partial class WorldController : Node2D
 	// Called when the node enters the scene tree for the first time.
 	private CharacterBody2D player;
 	private PackedScene deathScreen = GD.Load<PackedScene>("res://DeathScreen.tscn");
+	private PackedScene winScreen = GD.Load<PackedScene>("res://WinScreen.tscn");
 	private PackedScene level1 = GD.Load<PackedScene>("res://Level1.tscn");
 	private PackedScene level2 = GD.Load<PackedScene>("res://Level2.tscn");
 	private PackedScene level3 = GD.Load<PackedScene>("res://Level3.tscn");
@@ -73,9 +74,17 @@ public partial class WorldController : Node2D
 		EmitSignal(SignalName.PlayerReady, player); 
 	}
 
+	// Called when the next level needs to be loaded.
 	private void OnNextLevel(){
 		// Reset the level, with current level index incremented so that a new level is loaded.
 		currentLevelIndex++;
 		OnReset();
+	}
+
+	// Called when the player reaches the trophy.
+	public void CreateVictory(){
+		CanvasLayer instance = (CanvasLayer) winScreen.Instantiate();
+		AddChild(instance);
+		((Player) player).Win();
 	}
 }

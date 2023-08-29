@@ -24,7 +24,7 @@ public partial class JumpPowerup : Area2D
 	{
 	}
 
- 
+	// Called when a body enters the Area2D.
 	private void OnBodyEntered(Node2D body){
 		// If the body was a player body, destroy myself.
 		if(body.HasMethod("IsPlayer")){

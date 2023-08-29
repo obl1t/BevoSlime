@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6i6wkcyg0b2j"]
+[gd_scene load_steps=13 format=3 uid="uid://b6i6wkcyg0b2j"]
 
 [ext_resource type="PackedScene" uid="uid://codj5h0u6jnea" path="res://Sign.tscn" id="1_1d26i"]
 [ext_resource type="PackedScene" uid="uid://c8aumgc6tc1f0" path="res://JumpPowerup.tscn" id="2_nuuvm"]
@@ -6,8 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://dfiabiplpp7ah" path="res://Images/bg.png" id="5_i78mu"]
 [ext_resource type="TileSet" uid="uid://rvm1ptjex8hw" path="res://Tileset.tres" id="6_sn508"]
 [ext_resource type="PackedScene" uid="uid://denq101wkwkl1" path="res://Spike.tscn" id="7_tj2dt"]
+[ext_resource type="Script" path="res://Trophy.cs" id="8_uvr16"]
 [ext_resource type="Texture2D" uid="uid://bod7pc20h2lc6" path="res://Images/Trophy.png" id="8_vese3"]
+[ext_resource type="Texture2D" uid="uid://cge3vrq5i8wcs" path="res://Images/TrophyParticle.png" id="9_vwjp1"]
 [ext_resource type="PackedScene" uid="uid://b36rhdbp2frpi" path="res://Pointer.tscn" id="13_eoxu2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylvsx"]
+size = Vector2(78, 81)
+
+[sub_resource type="Curve" id="Curve_4wxjs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.462943), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Level3" type="Node2D"]
 
@@ -28,7 +37,6 @@ position = Vector2(1679, 680)
 
 [node name="CollisionShape2D" parent="Pointer/Eyesight" index="0"]
 position = Vector2(-577.144, -1.42859)
-scale = Vector2(0.999999, 0.999999)
 
 [node name="JumpPowerup" parent="." instance=ExtResource("2_nuuvm")]
 position = Vector2(488, 695)
@@ -55,7 +63,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(393224, 0, 1, 393222, 0, 1)
+layer_1/tile_data = PackedInt32Array(393224, 0, 1, 393222, 0, 1, 393223, 0, 1, 393225, 0, 1, 393237, 0, 1, 393238, 0, 1, 393239, 0, 1, 393240, 0, 1, 458746, 0, 1, 458747, 0, 1, 458748, 0, 1, 458749, 0, 1)
 
 [node name="Sign2" parent="." instance=ExtResource("1_1d26i")]
 position = Vector2(1666, 541)
@@ -66,7 +74,7 @@ offset_bottom = -43.5715
 text = "Pointers can only see in front of them. You are safe when behind them."
 
 [node name="JumpPowerup2" parent="." instance=ExtResource("2_nuuvm")]
-position = Vector2(2231, 540)
+position = Vector2(2022, 694)
 
 [node name="JumpPowerup3" parent="." instance=ExtResource("2_nuuvm")]
 position = Vector2(2342, 539)
@@ -79,19 +87,38 @@ position = Vector2(3736, 689)
 
 [node name="CollisionShape2D" parent="Pointer2/Eyesight" index="0"]
 position = Vector2(-525.357, -1.42859)
-scale = Vector2(0.999999, 0.999999)
 
 [node name="Spike" parent="." instance=ExtResource("7_tj2dt")]
 position = Vector2(3533, 693)
 
 [node name="Trophy" type="Area2D" parent="."]
+script = ExtResource("8_uvr16")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trophy"]
+position = Vector2(3950, 692.5)
+shape = SubResource("RectangleShape2D_ylvsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Trophy"]
+z_index = 1
 position = Vector2(3950, 694)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("8_vese3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Trophy"]
+position = Vector2(3949, 656)
+scale = Vector2(1, 1)
+amount = 12
+randomness = 1.0
+texture = ExtResource("9_vwjp1")
+direction = Vector2(2.08165e-12, -1)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 95.95
+initial_velocity_max = 151.52
+scale_amount_curve = SubResource("Curve_4wxjs")
+color = Color(1, 1, 0, 1)
+
+[connection signal="body_entered" from="Trophy" to="Trophy" method="OnBodyEntered"]
 
 [editable path="Pointer"]
 [editable path="Sign"]

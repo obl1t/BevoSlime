@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4iajs64ft6xg"]
+[gd_scene load_steps=17 format=3 uid="uid://c4iajs64ft6xg"]
 
 [ext_resource type="PackedScene" uid="uid://c8aumgc6tc1f0" path="res://JumpPowerup.tscn" id="1_barge"]
 [ext_resource type="PackedScene" uid="uid://codj5h0u6jnea" path="res://Sign.tscn" id="1_cjsvi"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ckp7nca1u6g4n" path="res://Images/Door/sprite_3.png" id="11_j7ai4"]
 [ext_resource type="Texture2D" uid="uid://ce1gh5m6bf2m6" path="res://Images/Door/sprite_4.png" id="12_d43iq"]
 [ext_resource type="Texture2D" uid="uid://dch0p70uk6q65" path="res://Images/Door/sprite_5.png" id="13_arf2y"]
-[ext_resource type="PackedScene" uid="uid://b36rhdbp2frpi" path="res://Pointer.tscn" id="13_wdprt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p815v"]
 texture = ExtResource("2_ibds4")
@@ -143,6 +142,7 @@ animations = [{
 [node name="Level1" type="Node2D"]
 
 [node name="Sign" parent="." instance=ExtResource("1_cjsvi")]
+position = Vector2(42, 689)
 
 [node name="JumpPowerup2" parent="." instance=ExtResource("1_barge")]
 position = Vector2(2202, 540)
@@ -203,8 +203,6 @@ position = Vector2(2831, 539)
 
 [node name="Label" parent="Sign3" index="2"]
 text = "A to proceed when over a door."
-
-[node name="Pointer" parent="." instance=ExtResource("13_wdprt")]
 
 [connection signal="body_entered" from="Door" to="Door" method="OnBodyEntered"]
 [connection signal="body_exited" from="Door" to="Door" method="OnBodyExited"]

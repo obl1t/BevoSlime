@@ -19,6 +19,7 @@ public partial class Sign : Area2D
 	{
 	}
 
+	// Called when a body enters the Area2D.
 	private void OnBodyEntered(Node2D body){
 		// Show the sign's text.
 		if(body.HasMethod("IsPlayer")){
@@ -26,6 +27,7 @@ public partial class Sign : Area2D
 		}
 	}
 
+	// Called when a body exits the Area2D.
 	private void OnBodyExited(Node2D body){
 		// Hide the sign's text.
 		if(body.HasMethod("IsPlayer")){

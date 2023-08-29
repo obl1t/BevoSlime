@@ -22,6 +22,7 @@ public partial class JumpLabel : Label
 	
 	}
 
+	// Called when the player either collects a powerup or jumps.
 	private void OnJumpUpdate(int numJumps){
 		jumps = numJumps;
 		Text = $": {jumps}";

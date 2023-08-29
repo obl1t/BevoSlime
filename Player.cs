@@ -15,7 +15,7 @@ public partial class Player : CharacterBody2D
 	private const float AIR_CONTROL = 0.5f; // The proportion of full control the player has when airborne.
 	private const float SIZE = 0.7f; // The size of the player sprite.
 	private float control; // Additional multiplier on how quickly the player can change directions/accelerate.
-	public enum PlayerState {Moving, Idle, Jumping, Dying};
+	public enum PlayerState {Moving, Idle, Jumping, Dying, Winning};
 	public PlayerState myState;
 	private AnimatedSprite2D mySprite;
 	private bool beenOffFloor; // Used to determine if the player has left the ground when jumping.
@@ -33,6 +33,8 @@ public partial class Player : CharacterBody2D
 	[Signal]
 	public delegate void NextLevelEventHandler(); // Used to signal the world to load the next level.
 
+	private bool canMoveToNextLevel; // Determines whether the player can advance levels with A.
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -40,6 +42,7 @@ public partial class Player : CharacterBody2D
 		mySprite = GetNode<AnimatedSprite2D>("PlayerSprite");
 		control = 1f;
 		beenOffFloor = false;
+		canMoveToNextLevel = false;
 		numJumps = 1;
 	}
 
@@ -77,6 +80,7 @@ public partial class Player : CharacterBody2D
 			myState = PlayerState.Idle;
 			mySprite.Play("Squish");
 			beenOffFloor = false;
+			GetNode<CpuParticles2D>("Particles").Emitting = true;
 		}
 		Velocity = velocity; 
 		MoveAndSlide();
@@ -84,10 +88,20 @@ public partial class Player : CharacterBody2D
 
 	// Changes velocity based on input keys.
 	private void DoMovement(double delta){
+		// Don't allow any input when in the victory screen.
+		if(myState == PlayerState.Winning){
+			return;
+		}
 		if (Input.IsActionJustPressed("input_r")){
 			EmitSignal(SignalName.Reset);
 		}
 		if (Input.IsActionJustPressed("input_a")){
+			if(canMoveToNextLevel){
+				EmitSignal(SignalName.NextLevel);
+			}
+		}
+		// Used for debugging. Allows the player to skip levels without needing to be at the exit.
+		if(Input.IsActionJustPressed("input_k")){
 			EmitSignal(SignalName.NextLevel);
 		}
 		// Don't allow control when dead.
@@ -171,5 +185,23 @@ public partial class Player : CharacterBody2D
 		velocity.X = 0;
 		velocity.Y = 0;
 		EmitSignal(SignalName.PlayerDeath);
+	}
+
+	// Change the state to winning.
+	public void Win(){
+		myState = PlayerState.Winning;
+		mySprite.Play("Win");
+		velocity.X = 0;
+		velocity.Y = 0;
+	}
+
+	// Allows the player to move to the next level.
+	public void AllowAscend(){
+		canMoveToNextLevel = true;
+	}
+
+	// Disallows the player to move to the next level.
+	public void DisallowAscend(){
+		canMoveToNextLevel = false;
 	}
 }

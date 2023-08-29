@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://c23bwxx248doe"]
+[gd_scene load_steps=15 format=3 uid="uid://c23bwxx248doe"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_oflhu"]
 [ext_resource type="Texture2D" uid="uid://5y5mqfl3inp" path="res://Images/Slime/sprite_7.png" id="2_6nqig"]
 [ext_resource type="Texture2D" uid="uid://crm1a2cy10plf" path="res://Images/Slime/sprite_4.png" id="2_bdjxk"]
 [ext_resource type="Texture2D" uid="uid://cfej67hhp33cr" path="res://Images/Slime/sprite_0.png" id="2_gioxy"]
-[ext_resource type="Texture2D" uid="uid://lba5qt4t2neh" path="res://Images/Slime/sprite_5.png" id="3_1qjt7"]
 [ext_resource type="Texture2D" uid="uid://fkng4bhknjfd" path="res://Images/Slime/sprite_1.png" id="3_d6ncv"]
 [ext_resource type="Texture2D" uid="uid://bufir0fa8254p" path="res://Images/Slime/sprite_2.png" id="4_v2fjg"]
+[ext_resource type="Texture2D" uid="uid://2unvmj8awun2" path="res://Images/Slime/sprite_9.png" id="5_id7yp"]
 [ext_resource type="Texture2D" uid="uid://bux1iuylna01v" path="res://Images/Slime/sprite_3.png" id="5_uigux"]
 [ext_resource type="Texture2D" uid="uid://dw6g6bvp2aq56" path="res://Images/Slime/sprite_6.png" id="8_rt675"]
+[ext_resource type="Texture2D" uid="uid://cge3vrq5i8wcs" path="res://Images/TrophyParticle.png" id="10_e548f"]
+[ext_resource type="Texture2D" uid="uid://dny4t5f2xlme0" path="res://Images/Slime/sprite_8.png" id="10_ufogt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjb6u"]
 radius = 6.42857
@@ -37,7 +39,7 @@ animations = [{
 "texture": ExtResource("2_bdjxk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1qjt7")
+"texture": ExtResource("5_id7yp")
 }],
 "loop": false,
 "name": &"Jump",
@@ -70,7 +72,19 @@ animations = [{
 "loop": false,
 "name": &"Squish",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ufogt")
+}],
+"loop": false,
+"name": &"Win",
+"speed": 6.0
 }]
+
+[sub_resource type="Curve" id="Curve_0tpnb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.400798, 0.886455), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(76, 40)
@@ -90,4 +104,20 @@ z_index = 3
 texture_filter = 1
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_d57en")
-animation = &"Idle"
+animation = &"Jump"
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+z_index = 3
+position = Vector2(0, 44)
+emitting = false
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("10_e548f")
+direction = Vector2(2.08165e-12, -1)
+spread = 43.18
+gravity = Vector2(2.08165e-12, 500)
+initial_velocity_min = 156.56
+initial_velocity_max = 242.42
+scale_amount_curve = SubResource("Curve_0tpnb")
+color = Color(0.898039, 0.333333, 0, 1)
