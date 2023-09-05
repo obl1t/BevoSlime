@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "wRiii7h+eEhdo3d98vpJPAtM96TKrL9D/PZEJj4U2zf2KXTwaovQhsTB5Du5WqXIOZa4dgIrqongFzQpZy5u7w==",
+  "success": true,
+  "projectFilePath": "/Users/vivekabraham/Documents/BevoSlime/BevoSlime.csproj",
+  "expectedPackageFiles": [
+    "/Users/vivekabraham/.nuget/packages/godot.sourcegenerators/4.1.1/godot.sourcegenerators.4.1.1.nupkg.sha512",
+    "/Users/vivekabraham/.nuget/packages/godotsharp/4.1.1/godotsharp.4.1.1.nupkg.sha512",
+    "/Users/vivekabraham/.nuget/packages/godotsharpeditor/4.1.1/godotsharpeditor.4.1.1.nupkg.sha512",
+    "/Users/vivekabraham/.nuget/packages/microsoft.netcore.app.ref/6.0.21/microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
+    "/Users/vivekabraham/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.21/microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,17 @@
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.csproj.AssemblyReference.cache
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.AssemblyInfoInputs.cache
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.AssemblyInfo.cs
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.csproj.CoreCompileInputs.cache
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/BevoSlime.deps.json
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/BevoSlime.runtimeconfig.json
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/BevoSlime.dll
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/BevoSlime.pdb
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.csproj.CopyComplete
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.dll
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/refint/BevoSlime.dll
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.pdb
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/BevoSlime.genruntimeconfig.cache
+/Users/vivekabraham/Documents/BevoSlime/.godot/mono/temp/obj/Debug/ref/BevoSlime.dll

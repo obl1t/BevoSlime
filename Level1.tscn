@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://codj5h0u6jnea" path="res://Sign.tscn" id="1_cjsvi"]
 [ext_resource type="Texture2D" uid="uid://bsamrwn36433v" path="res://Images/Floor.png" id="2_ibds4"]
 [ext_resource type="Script" path="res://MainCamera.cs" id="4_04yej"]
-[ext_resource type="Texture2D" uid="uid://dfiabiplpp7ah" path="res://Images/bg.png" id="5_4lxtg"]
+[ext_resource type="Texture2D" uid="uid://b7eeplvq5ssyi" path="res://Images/Background1-1.png (8).png" id="5_nabdq"]
 [ext_resource type="Script" path="res://Door.cs" id="7_lno5j"]
 [ext_resource type="Texture2D" uid="uid://dh8ohavmolbvd" path="res://Images/Door/sprite_0.png" id="8_a0ogp"]
 [ext_resource type="Texture2D" uid="uid://bjc1eph0shylo" path="res://Images/Door/sprite_1.png" id="9_8q68r"]
@@ -174,9 +174,8 @@ script = ExtResource("4_04yej")
 
 [node name="Sprite2D" type="Sprite2D" parent="MainCamera"]
 visible = false
-position = Vector2(1264, 6.00006)
-scale = Vector2(1.17308, 0.4)
-texture = ExtResource("5_4lxtg")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_nabdq")
 
 [node name="Door" type="Area2D" parent="."]
 position = Vector2(2987, 535)

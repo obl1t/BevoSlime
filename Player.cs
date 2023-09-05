@@ -153,6 +153,7 @@ public partial class Player : CharacterBody2D
 		// If we can jump, jump and send a signal for the jump label to use.
 		if(Input.IsActionPressed("input_z")){
 			if(myState != PlayerState.Jumping && numJumps > 0){
+				GetNode<AudioStreamPlayer>("Jump").Play();
 				velocity.Y = -JUMP_STRENGTH;
 				mySprite.Play("Jump");
 				numJumps--;
@@ -184,6 +185,7 @@ public partial class Player : CharacterBody2D
 		mySprite.Play("Death");
 		velocity.X = 0;
 		velocity.Y = 0;
+		GetNode<AudioStreamPlayer>("Lose").Play();
 		EmitSignal(SignalName.PlayerDeath);
 	}
 

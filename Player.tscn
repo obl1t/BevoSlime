@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c23bwxx248doe"]
+[gd_scene load_steps=17 format=3 uid="uid://c23bwxx248doe"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_oflhu"]
 [ext_resource type="Texture2D" uid="uid://5y5mqfl3inp" path="res://Images/Slime/sprite_7.png" id="2_6nqig"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dw6g6bvp2aq56" path="res://Images/Slime/sprite_6.png" id="8_rt675"]
 [ext_resource type="Texture2D" uid="uid://cge3vrq5i8wcs" path="res://Images/TrophyParticle.png" id="10_e548f"]
 [ext_resource type="Texture2D" uid="uid://dny4t5f2xlme0" path="res://Images/Slime/sprite_8.png" id="10_ufogt"]
+[ext_resource type="AudioStream" uid="uid://bpb6ndajiqq0c" path="res://Sounds/Lose.mp3" id="12_pia0w"]
+[ext_resource type="AudioStream" uid="uid://dkb6lnu5hdhiu" path="res://Sounds/SlimeJump.mp3" id="13_2gtly"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjb6u"]
 radius = 6.42857
@@ -121,3 +123,10 @@ initial_velocity_min = 156.56
 initial_velocity_max = 242.42
 scale_amount_curve = SubResource("Curve_0tpnb")
 color = Color(0.898039, 0.333333, 0, 1)
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pia0w")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_2gtly")
+volume_db = -2.971

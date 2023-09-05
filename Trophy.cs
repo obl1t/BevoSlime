@@ -18,7 +18,7 @@ public partial class Trophy : Area2D
 
 	// Called when a body enters the Area2D. 
 	private void OnBodyEntered(Node body){
-		if(body.HasMethod("Player")){
+		if(body.HasMethod("IsPlayer")){
 			((WorldController) world).CreateVictory();
 			QueueFree();
 		}

@@ -12,6 +12,7 @@ public partial class WorldController : Node2D
 	private PackedScene level3 = GD.Load<PackedScene>("res://Level3.tscn");
 	private Node2D currentLevel;
 	private int currentLevelIndex; // Used to determine logic related to the current game level.
+	private const int TOTAL_LEVELS = 3;
 	private PackedScene playerScene = GD.Load<PackedScene>("res://Player.tscn");
 
 	[Signal]
@@ -24,6 +25,7 @@ public partial class WorldController : Node2D
 		currentLevel = (Node2D) level1.Instantiate();
 		isInDeath = false;
 		AddChild(currentLevel);
+		GetNode<AudioStreamPlayer>("Music").Play();
 		CreatePlayer();
 	}
 
@@ -34,9 +36,12 @@ public partial class WorldController : Node2D
 
 	// Called when the the player dies. 
 	private void OnPlayerDeath(){
-		isInDeath = true;
-		CanvasLayer instance = (CanvasLayer) deathScreen.Instantiate();
-		AddChild(instance);
+		GetNode<AudioStreamPlayer>("Music").Stop();
+		if(!isInDeath){
+			isInDeath = true;
+			CanvasLayer instance = (CanvasLayer) deathScreen.Instantiate();
+			AddChild(instance);
+		}
 	}
 
 	// Called when the player resets the level.
@@ -56,8 +61,10 @@ public partial class WorldController : Node2D
 		if(isInDeath){
 			// Destroy the death screen.
 			GetNode<CanvasLayer>("DeathScreen").QueueFree();
+			GetNode<AudioStreamPlayer>("Music").Play();
 			isInDeath = false;
 		}
+		
 		AddChild(currentLevel);
 		player.QueueFree();
 		CreatePlayer();
@@ -77,7 +84,10 @@ public partial class WorldController : Node2D
 	// Called when the next level needs to be loaded.
 	private void OnNextLevel(){
 		// Reset the level, with current level index incremented so that a new level is loaded.
-		currentLevelIndex++;
+		if(currentLevelIndex < TOTAL_LEVELS){
+			currentLevelIndex++;
+		}
+		GetNode<Label>("HUD/Control/Level").Text = $"Level: {currentLevelIndex}";
 		OnReset();
 	}
 

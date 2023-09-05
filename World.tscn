@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0crs30sqs1sm"]
+[gd_scene load_steps=6 format=3 uid="uid://0crs30sqs1sm"]
 
 [ext_resource type="Script" path="res://WorldController.cs" id="1_fpqwx"]
 [ext_resource type="Script" path="res://JumpLabel.cs" id="2_lq1o6"]
 [ext_resource type="Texture2D" uid="uid://dgci65rj6wcmn" path="res://Images/JumpUI.png" id="3_h7xq4"]
+[ext_resource type="AudioStream" uid="uid://w0rewidef11t" path="res://Sounds/BevoTheme.mp3" id="4_xhu2o"]
 
 [sub_resource type="SystemFont" id="SystemFont_meooe"]
 
@@ -41,3 +42,16 @@ offset_right = 1105.0
 offset_bottom = 89.1416
 texture = ExtResource("3_h7xq4")
 expand_mode = 5
+
+[node name="Level" type="Label" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 34.0
+offset_right = 173.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 40
+text = "Level: 1"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xhu2o")
+volume_db = -2.0

@@ -1,0 +1,2 @@
+﻿51290
+/Users/vivekabraham/Documents/Godot/bin/godot.macos.editor.arm64.mono
